@@ -21,13 +21,13 @@ def do_template(in_data, template, outfile):
 	try:
 		tf = open(template, 'r')
 	except IOError:
-		print 'Error opening "' + template + '" for reading'
+		print(f'Error opening "{template}" for reading')
 		return
 	try:
 		of = open(outfile, 'w')
 	except IOError:
 		tf.close()
-		print 'Error opening "' + outfile + '" for writing'
+		print(f'Error opening "{outfile}" for writing')
 		return
 	
 	sTag = '<pwm-script/>'
@@ -66,7 +66,7 @@ data = {'script':'', 'iscript':'', 'body':''}
 try:
 	f = open('main.html', 'r')
 except IOError:
-	print "Can't file the input file."
+	print("Can't file the input file.")
 	sys.exit(1)
 try:
 	for line in f:
@@ -129,7 +129,7 @@ while oscript.find('<script') > -1:
 			finally:
 				f.close()
 		except IOError:
-			print 'Error reading', file
+			print(f'Error reading {file}')
 	else:
 		nscript += oscript[:oscript.find('</script>')+9]
 		oscript = oscript[oscript.find('</script>')+9:].strip()
@@ -146,4 +146,4 @@ for output in templates:
 	d = d + "/passwordmaker.html"
 	do_template(data, output + ".html", d)
 
-print 'Done.'
+print('Done.')
